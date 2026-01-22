@@ -94,6 +94,11 @@ async function init() {
         }
     }
     loginOverlay.classList.add('active');
+
+    if (!window.crypto || !window.crypto.subtle) {
+        alert("为了安全起见，Antigravity/Skernelx 图床依赖加密API，该功能仅在 HTTPS 环境下可用。\n\n检测到当前环境不支持加密（可能是 HTTP 访问），请尝试使用 https://nashome.me 访问。");
+        loginError.textContent = "环境不安全：无法加载加密模块 (HTTPS only)";
+    }
 }
 
 async function attemptLogin(password) {
