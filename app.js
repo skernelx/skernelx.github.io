@@ -60,7 +60,7 @@ async function decryptToken(encryptedHex, key, ivHex, authTagHex) {
         );
         return new TextDecoder().decode(decrypted);
     } catch (e) {
-        throw new Error("Incorrect password");
+        throw new Error("密码错误");
     }
 }
 
@@ -121,11 +121,11 @@ loginBtn.addEventListener('click', async () => {
     const pwd = passwordInput.value;
     if (!pwd) return;
 
-    loginBtn.textContent = "Verifying...";
+    loginBtn.textContent = "验证中...";
     const success = await attemptLogin(pwd);
     if (!success) {
-        loginError.textContent = "Incorrect password.";
-        loginBtn.textContent = "Unlock";
+        loginError.textContent = "密码错误";
+        loginBtn.textContent = "解锁";
     }
 });
 
@@ -224,13 +224,13 @@ function addToHistory(file, url) {
             <div class="filename">${file.name}</div>
             <div class="url">${url}</div>
         </div>
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn">复制</button>
     `;
 
     div.querySelector('.copy-btn').addEventListener('click', function () {
         navigator.clipboard.writeText(url);
-        this.textContent = 'Copied!';
-        setTimeout(() => this.textContent = 'Copy', 2000);
+        this.textContent = '已复制!';
+        setTimeout(() => this.textContent = '复制', 2000);
     });
 
     // Add to top
