@@ -193,7 +193,7 @@ async function uploadToGitHub(file) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    message: `通过 Antigravity 上传 ${file.name}`,
+                    message: `通过 Skernelx 图床上传 ${file.name}`,
                     content: base64Content
                 })
             });
