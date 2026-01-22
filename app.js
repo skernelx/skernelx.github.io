@@ -193,12 +193,12 @@ async function uploadToGitHub(file) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    message: `Upload ${file.name} via Antigravity`,
+                    message: `通过 Antigravity 上传 ${file.name}`,
                     content: base64Content
                 })
             });
 
-            if (!response.ok) throw new Error('Upload failed');
+            if (!response.ok) throw new Error('上传失败');
 
             const data = await response.json();
             // Construct CDN URL (using jsDelivr or raw GitHub Pages link)
@@ -208,7 +208,7 @@ async function uploadToGitHub(file) {
             addToHistory(file, cdnUrl);
         };
     } catch (e) {
-        alert('Upload failed: ' + e.message);
+        alert('上传失败: ' + e.message);
     } finally {
         document.getElementById('uploading-state').classList.add('hidden');
         document.querySelector('.upload-content').classList.remove('hidden');
